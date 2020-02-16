@@ -72,7 +72,7 @@ class BarChart extends React.Component {
             .attr("dy", "-5.1em")
             .attr("text-anchor", "end")
             .attr("stroke", "black")
-            .text("Stock Price");
+            .text("Price");
 
         g.selectAll(".bar")
             .data(data)
@@ -94,7 +94,7 @@ class BarChart extends React.Component {
         function onMouseOver(d, i) {
             d3.select(this).attr('class', 'highlight');
             d3.select(this)
-                .transition()     // adds animation
+                .transition() 
                 .duration(400)
                 .attr('width', x.bandwidth() + 5)
                 .attr("y", function (d) { return y(d.value) - 10; })
@@ -109,14 +109,14 @@ class BarChart extends React.Component {
                     return y(d.value) - 15;
                 })
                 .text(function () {
-                    return ['Rs' + d.value];  // Value of the text
+                    return ['Rs' + d.value];
                 });
         }
 
         function onMouseOut(d, i) {
             d3.select(this).attr('class', 'bar');
             d3.select(this)
-                .transition()     // adds animation
+                .transition()
                 .duration(400)
                 .attr('width', x.bandwidth())
                 .attr("y", function (d) { return y(d.value); })
